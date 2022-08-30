@@ -16,7 +16,7 @@
 
 - Podemos representar qualquer número real (base 10) em qualquer base da seguinte forma:
 
-    - ![image](https://user-images.githubusercontent.com/98990221/187479943-70a264b9-cae3-486d-b138-4272e8d6fa06.png)
+    - ![image](https://user-images.githubusercontent.com/98990221/187480149-14bd5e24-bc89-4aac-b0e9-867b52522340.png)
 
 - Exemplos:
 
