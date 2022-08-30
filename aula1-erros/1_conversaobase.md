@@ -1,3 +1,5 @@
+# Mudança de Bases
+
 - Na introdução à teoria dos erros,  vamos analisar dois casos de três.
 
     - Construir modelo matemático e observar os erros de modelagem: não
