@@ -16,7 +16,7 @@
 
 - Podemos representar qualquer número real (base 10) em qualquer base da seguinte forma:
 
-    - #TODO: Botar imagem da fórmula do somatório.
+    - ![image](https://user-images.githubusercontent.com/98990221/187479943-70a264b9-cae3-486d-b138-4272e8d6fa06.png)
 
 - Exemplos:
 
