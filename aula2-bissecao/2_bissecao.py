@@ -6,7 +6,7 @@ def bissecao(f, a, b, tol, max_iter = 50):  # f = função. a,b = intervalo, tol
 
     if Fa * Fb > 0:  # Se multiplicar esses dois e não mudar de sinal, significa que ou os dois são positivos ou são negativos. Portanto, o intervalo [a,b] não possui linha que cruza a absissa (raíz).
         print("Erro, a função não muda de sinal.")
-        return (True, None)  # Portanto, o intervalo não possui raíz.
+        return (False, None)  # Portanto, o intervalo não possui raíz.
 
     print("k\t a\t\t fa\t\t b\t\t fb\t\t x\t\t fx\t\tintervX")
 
@@ -17,7 +17,7 @@ def bissecao(f, a, b, tol, max_iter = 50):  # f = função. a,b = intervalo, tol
     print("-\t%e\t%e\t%e\t%e\t%e\t%e\t%e" % (a, Fa, b, Fb, x, Fx, intervX))
 
     if (intervX <= tol):  # Se o intervalo entre a e b for maior que a tolerância, então ainda tem mais coisas pra checar. Se não, então já achou a raíz (por sorte, em 1 iteração apenas)
-        return (False, x)
+        return (True, x)
     
     k = 1  # A partir do caso base acima, vamos iterar mais vezes até achar a raíz desejada, começando com k = 1.
 
@@ -36,11 +36,11 @@ def bissecao(f, a, b, tol, max_iter = 50):  # f = função. a,b = intervalo, tol
         print("%d\t%e\t%e\t%e\t%e\t%e\t%e\t%e" % (k, a, Fa, b, Fb, x, Fx, intervX))
 
         if (intervX <= tol):  # Se o novo intervalo estiver dentro da tolerância, então a raíz está encontrada.
-            return (False, x)
+            return (True, x)
 
         k = k+1
     print("Erro, número máximo de iterações atingido")
-    return (True, x)
+    return (False, x)
 
 
 a = float(input("Digite o a: "))
@@ -48,9 +48,9 @@ b = float(input("Digite o b: "))
 tol = float(input("Digite a tolerância: "))
 
 
-(houve_erro, raiz) = bissecao(f, a, b, tol)
+(sem_erro, raiz) = bissecao(f, a, b, tol)
 
-if houve_erro == True:
+if sem_erro == False:
     print("O método retornou um erro.")
 if raiz is not None:
     print(f"Raíz: {raiz}")
