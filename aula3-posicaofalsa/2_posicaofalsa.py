@@ -1,6 +1,6 @@
 def f(x): return x**3-9*x+3
 
-def posicao_falsa(f, a, b, tol, iter_max = 50):
+def posicao_falsa(f, a, b, tol, iter_max = 20):
     Fa = f(a)
     Fb = f(b)
     if Fa * Fb > 0:
@@ -8,11 +8,6 @@ def posicao_falsa(f, a, b, tol, iter_max = 50):
         return (False, None)
 
     intervX = abs(b-a)
-    x = (a * f(b) - b * f(a))/(f(b) - f(a))
-    Fx = f(x)
-
-    print("k\t a\t\t fa\t\t b\t\t fb\t\t x\t\t fx\t\tintervX")
-    print("-\t%e\t%e\t%e\t%e\t%e\t%e\t%e" % (a, Fa, b, Fb, x, Fx, intervX))
 
     if intervX <= tol:
         return (True, x)
@@ -22,7 +17,18 @@ def posicao_falsa(f, a, b, tol, iter_max = 50):
         return (True, b)
 
     k = 1
+
+    print("k\t a\t\t fa\t\t b\t\t fb\t\t x\t\t fx\t\tintervX")
+
     while k <= iter_max:
+        x = (a * f(b) - b * f(a))/(f(b) - f(a))
+        Fx = f(x)
+
+        print("%d\t%e\t%e\t%e\t%e\t%e\t%e\t%e" % (k, a, Fa, b, Fb, x, Fx, intervX))
+
+        if abs(Fx) <= tol:
+            return (True, x)
+
         if Fa * Fx > 0:
             a = x
             Fa = Fx
@@ -31,19 +37,11 @@ def posicao_falsa(f, a, b, tol, iter_max = 50):
             Fb = Fx
         
         intervX = abs(b-a)
-        x = (a * f(b) - b * f(a))/(f(b) - f(a))
-        Fx = f(x)
-
-        print("-\t%e\t%e\t%e\t%e\t%e\t%e\t%e" % (a, Fa, b, Fb, x, Fx, intervX))
 
         if intervX <= tol:
             return (True, x)
-        if abs(f(a)) <= tol:
-            return (True, a)
-        if abs(f(b)) <= tol:
-            return (True, b)
-
         k += 1
+
     print("Erro, número máximo de iterações atingido")
     return (False, x)
 
