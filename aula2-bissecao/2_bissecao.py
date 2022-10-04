@@ -1,20 +1,22 @@
-def f(x): return x**3-9*x+3
+from math import e as euler, sin, cos
 
-def bissecao(f, a, b, tol, max_iter = 50):  # f = função. a,b = intervalo, tol = tolerância (limite), max_iter = máxima iteração possível. Para evitar loopings infinitos.
-    Fa = f(a)
-    Fb = f(b)
+def f(x): return -((euler**x)/2) + 2*cos(x)
+
+def bissecao(f, a, b, tol, aprox = 4, max_iter = 50):  # f = função. a,b = intervalo, tol = tolerância (limite), max_iter = máxima iteração possível. Para evitar loopings infinitos.
+    Fa = round(f(a), aprox)
+    Fb = round(f(b), aprox)
 
     if Fa * Fb > 0:  # Se multiplicar esses dois e não mudar de sinal, significa que ou os dois são positivos ou são negativos. Portanto, o intervalo [a,b] não possui linha que cruza a absissa (raíz).
         print("Erro, a função não muda de sinal.")
         return (False, None)  # Portanto, o intervalo não possui raíz.
 
-    print("k\t a\t\t fa\t\t b\t\t fb\t\t x\t\t fx\t\tintervX")
+    print("k\t a\t\t b\t\t x\t\t fx")
 
-    intervX = abs(b - a)  # abs = módulo, valor absoluto. Intervalo real entre a e b.
-    x = (a+b)/2  # Ponto médio entre o intervalo
-    Fx = f(x)  # Vejo o novo valor a partir do ponto médio para criar um novo intervalo.
-
-    print("-\t%e\t%e\t%e\t%e\t%e\t%e\t%e" % (a, Fa, b, Fb, x, Fx, intervX))
+    intervX = round(abs(b - a), aprox)  # abs = módulo, valor absoluto. Intervalo real entre a e b.
+    x = round((a+b)/2, aprox)  # Ponto médio entre o intervalo
+    Fx = round(f(x), aprox)  # Vejo o novo valor a partir do ponto médio para criar um novo intervalo.
+    k = 0
+    print("%d\t%e\t%e\t%e\t%e" % (k, a, b, x, Fx))
 
     if (intervX <= tol):  # Se o intervalo entre a e b for maior que a tolerância, então ainda tem mais coisas pra checar. Se não, então já achou a raíz (por sorte, em 1 iteração apenas)
         return (True, x)
@@ -29,11 +31,11 @@ def bissecao(f, a, b, tol, max_iter = 50):  # f = função. a,b = intervalo, tol
             b = x  # Se não, então b se torna o novo x.
             Fb = Fx
 
-        intervX = abs(b - a)  # Refaço o intervalo novo
-        x = (a+b)/2
-        Fx = f(x)
+        intervX = round(abs(b - a), aprox)  # Refaço o intervalo novo
+        x = round((a+b)/2, 4)
+        Fx = round(f(x), 4)
 
-        print("%d\t%e\t%e\t%e\t%e\t%e\t%e\t%e" % (k, a, Fa, b, Fb, x, Fx, intervX))
+        print("%d\t%e\t%e\t%e\t%e" % (k, a, b, x, Fx))
 
         if (intervX <= tol):  # Se o novo intervalo estiver dentro da tolerância, então a raíz está encontrada.
             return (True, x)
@@ -46,9 +48,10 @@ def bissecao(f, a, b, tol, max_iter = 50):  # f = função. a,b = intervalo, tol
 a = float(input("Digite o a: "))
 b = float(input("Digite o b: "))
 tol = float(input("Digite a tolerância: "))
+aprox = int(input("Digite o número de casas decimais a ser trabalhada: "))
 
 
-(sem_erro, raiz) = bissecao(f, a, b, tol)
+(sem_erro, raiz) = bissecao(f, a, b, tol, aprox)
 
 if sem_erro == False:
     print("O método retornou um erro.")
