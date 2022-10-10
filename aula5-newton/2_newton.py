@@ -2,14 +2,14 @@ from math import e as euler, cos, sin, log10
 from numpy import log as ln
 
 def f(x):
-    return x - x*ln(x)
+    #return x - x*ln(x)
     #return -((euler**x)/2) + 2*cos(x)
-    #return x**3-9*x+5
+    return x**3-9*x+5
 
 def dxf(x):
-    return -log10(x)
+    #return -log10(x)
     #return -((4*sin(x)+euler**x)/2)
-    #return 3*x**2-9
+    return 3*x**2-9
 
 def newton(f, dxf, tol, x, aprox = 4, iter = 50):
 
