@@ -7,7 +7,7 @@ def f(x):
 
 def dxf(x):
     #return -((4*sin(x)+euler**x)/2)
-    return x**3 - 9*x + 5
+    return x**3 - 9*x + 5;
 
 def secante(f, tol, x0, x1, aprox = 4, iter = 50):
 
