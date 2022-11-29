@@ -1,6 +1,10 @@
 #include <iostream>
 #include "jacobi_seidel.h"
 
+// Esse é o trabalho 2 com main separada. Main e .h feito pelo Brito. 
+// Guardando apenas como registro. A pasta "trabalho2" contém de fato a parte
+// que eu fiz, tudo junto.
+
 using std::cout;
 using std::cin;
 using std::endl;
