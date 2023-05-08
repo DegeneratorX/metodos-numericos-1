@@ -2,7 +2,9 @@ from math import e as euler, sin, cos
 
 def f(x): return -((euler**x)/2) + 2*cos(x)
 
-def bissecao(f, a, b, tol, aprox = 4, max_iter = 50):  # f = função. a,b = intervalo, tol = tolerância (limite), max_iter = máxima iteração possível. Para evitar loopings infinitos.
+def g(x): return (1/8)*x**4 - 2*x**3 + 9*x**2 - 12*x + 3
+
+def bissecao(f, a, b, tol, aprox = 4, max_iter = 500):  # f = função. a,b = intervalo, tol = tolerância (limite), max_iter = máxima iteração possível. Para evitar loopings infinitos.
     Fa = round(f(a), aprox)
     Fb = round(f(b), aprox)
 
@@ -51,7 +53,7 @@ tol = float(input("Digite a tolerância: "))
 aprox = int(input("Digite o número de casas decimais a ser trabalhada: "))
 
 
-(sem_erro, raiz) = bissecao(f, a, b, tol, aprox)
+(sem_erro, raiz) = bissecao(g, a, b, tol, aprox)
 
 if sem_erro == False:
     print("O método retornou um erro.")

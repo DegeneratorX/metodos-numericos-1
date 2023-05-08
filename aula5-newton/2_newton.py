@@ -11,7 +11,11 @@ def dxf(x):
     #return -((4*sin(x)+euler**x)/2)
     return 3*x**2-9
 
-def newton(f, dxf, tol, x, aprox = 4, iter = 50):
+def g(x): return (1/8)*x**4 - 2*x**3 + 9*x**2 - 12*x + 3
+
+def dxg(x): return (x**3/2)-6*x**2+18*x-12
+
+def newton(f, dxf, tol, x, aprox = 4, iter = 500):
 
     if dxf == 0:
         print("Erro: a derivada de f é zero.")
@@ -42,7 +46,7 @@ tol = float(input("Digite a tolerancia: "))
 
 aprox = int(input("Digite o número de casas decimais a ser trabalhada: "))
 
-(sem_erro, raiz) = newton(f, dxf, tol, x, aprox)
+(sem_erro, raiz) = newton(g, dxg, tol, x, aprox)
 
 if sem_erro == False:
     print("O método retornou um erro.")
