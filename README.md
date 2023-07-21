@@ -1,2 +1,3 @@
-# MetodosNum1
-Disciplina de métodos numéricos 1.
+# Métodos Numéricos 1 - UFC
+
+Professor: Bento
